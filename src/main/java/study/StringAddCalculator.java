@@ -3,8 +3,6 @@ package study;
 import java.util.Arrays;
 
 public class StringAddCalculator {
-    static final int CUSTOM_DELIMITER_INDEX = 2;
-
     public static int splitAndSum(String text) {
         if (isNullOrEmpty(text)) {
             return 0;
@@ -18,8 +16,8 @@ public class StringAddCalculator {
 
     public static String[] textParser(String text) {
         if (text.contains("//")) {
-            String delimiter = String.valueOf(text.charAt(CUSTOM_DELIMITER_INDEX));
-            return text.split("\\n")[1].split(delimiter);
+            String delimiter = String.valueOf(text.charAt(2));
+            return text.substring(4).split(delimiter);
         }
         return text.split("[,:]");
     }
