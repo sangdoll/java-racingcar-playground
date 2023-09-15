@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,5 +45,27 @@ public class StringAddCalculatorTest {
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("음수가 존재할 때, 예외를 잘 발생시키는지를 확인합니다.")
+    @Test
+    public void getSum_canThrowException() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.getSum(new String[] {"1","-1","2"}))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("조건을 만족할 때, 정확한 합을 구하는지 확인합니다.")
+    @Test
+    public void getSum_canGetValidateSum() throws Exception {
+        assertThat(StringAddCalculator.getSum(new String[] {"1","2","3"}))
+                .isEqualTo(6);
+    }
+
+    @DisplayName("여러 문자열을 넣었을 때, 파싱이 정확히 이루어지는지를 확인합니다.")
+    @Test
+    public void parser() {
+        assertThat(StringAddCalculator.textParser("1")).containsExactly("1");
+        assertThat(StringAddCalculator.textParser("//;\n1;2;3")).containsExactly("1","2","3");
+        assertThat(StringAddCalculator.textParser("1,2,3:4,5:6")).containsExactly("1","2","3","4","5","6");
     }
 }
