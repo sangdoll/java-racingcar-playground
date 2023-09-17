@@ -7,14 +7,14 @@ public class StringAddCalculator {
         if (isNullOrEmpty(text)) {
             return 0;
         }
-        return getSum(textParser(text));
+        return getSum(parseText(text));
     }
 
     public static boolean isNullOrEmpty(String text) {
         return text == null || text.isEmpty();
     }
 
-    public static String[] textParser(String text) {
+    public static String[] parseText(String text) {
         if (text.contains("//")) {
             String delimiter = String.valueOf(text.charAt(2));
             return text.substring(4).split(delimiter);
