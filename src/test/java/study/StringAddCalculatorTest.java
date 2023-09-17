@@ -63,9 +63,9 @@ public class StringAddCalculatorTest {
 
     @DisplayName("여러 문자열을 넣었을 때, 파싱이 정확히 이루어지는지를 확인합니다.")
     @Test
-    public void parser() {
-        assertThat(StringAddCalculator.textParser("1")).containsExactly("1");
-        assertThat(StringAddCalculator.textParser("//;\n1;2;3")).containsExactly("1","2","3");
-        assertThat(StringAddCalculator.textParser("1,2,3:4,5:6")).containsExactly("1","2","3","4","5","6");
+    public void parseText_isParseCorrectly_true() {
+        assertThat(StringAddCalculator.parseText("1")).containsExactly("1");
+        assertThat(StringAddCalculator.parseText("//;\n1;2;3")).containsExactly("1","2","3");
+        assertThat(StringAddCalculator.parseText("1,2,3:4,5:6")).containsExactly("1","2","3","4","5","6");
     }
 }
