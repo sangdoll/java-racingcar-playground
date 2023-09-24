@@ -1,32 +1,27 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.util.RandomNumbers;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.Map;
-import java.util.Set;
 
 public class GameController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final RandomNumbers randomNumbers = new RandomNumbers();
 
-    public void startGame() {
-        Cars players = new Cars(inputView.getPlayersName());
-        int round = inputView.getTotalRound();
-        playGame(players, round);
-    }
+    public void playGame() {
+        String carNames = inputView.getCarsName();
+        Cars cars = new Cars(carNames);
 
-    public void playGame(Cars players, int round) {
+        int totalRounds = inputView.getTotalRound();
 
-        outputView.printMessage("\n실행 결과");
-        for (int i = 0; i < round; i++) {
-            players.moveAllCars();
-            Set<Map.Entry<String, String>> result = players.getRoundResult();
-            result.forEach(e -> outputView.printResult(e.getKey(), e.getValue()));
-            outputView.printOneLine();
+        outputView.printResultMessage();
+        // 각 라운드마다 차를 랜덤 숫자를 이용하여 전진시킨 뒤, 결과를 출력함
+        for (int i = 0; i < totalRounds; i++) {
+            cars.moveAllCars(randomNumbers.getRandomNumbers(cars.getTotalCount()));
+            outputView.printMessage(cars.getResult());
         }
-
-        outputView.printWinners(players.getWinningCarNames());
+        outputView.printWinner(cars.getMaxLocationCarsName());
     }
 }
