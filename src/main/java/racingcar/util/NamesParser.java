@@ -18,7 +18,7 @@ public class NamesParser {
 
     public List<Car> parsing() {
         return Arrays.stream(names.split(","))
-                .map(Car::new)
+                .map(Car::of)
                 .collect(Collectors.toList());
     }
 }
