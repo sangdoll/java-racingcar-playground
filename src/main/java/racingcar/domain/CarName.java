@@ -5,17 +5,17 @@ public class CarName {
     private final String name;
 
     public CarName(String name) {
-        isValidName(name);
+        if (isExceedLength(name)) {
+            throw new IllegalArgumentException("[ERROR] 차량 이름은 5글자를 초과할 수 없습니다.");
+        }
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 빈 값은 사용될 수 없습니다.");
+        }
         this.name = name;
     }
 
-    private void isValidName(String name) {
-        if (name.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException("[ERROR] 차량 이름은 5글자까지만 허용됩니다.");
-        }
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 차량 이름을 입력해주세요.");
-        }
+    private boolean isExceedLength(String name) {
+        return name.length() > MAX_LENGTH;
     }
 
     public String getName() {
