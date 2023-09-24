@@ -1,47 +1,51 @@
 package racingcar.domain;
 
-import java.util.*;
+import racingcar.util.LocationParser;
+import racingcar.util.NamesParser;
+
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> carList;
 
     public Cars(String names) {
-        this.carList = mapNamesToCars(names);
-    }
-
-    private List<Car> mapNamesToCars(String names) {
-        return Arrays.stream(names.split(","))
-                .map(Car::new)
-                .collect(Collectors.toList());
+        NamesParser parser = new NamesParser(names);
+        this.carList = parser.parsing();
     }
 
     public List<Car> getCarList() {
         return carList;
     }
 
-    public void moveAllCars() {
-        carList.forEach(Car::play);
+    public void moveAllCars(List<Integer> numbers) {
+        IntStream.range(0, carList.size())
+                .forEach(ind -> carList.get(ind).move(numbers.get(ind)));
     }
 
-    public Set<Map.Entry<String, String>> getRoundResult() {
-        Map<String, String> result = new HashMap<>();
-        carList.forEach(car -> result.put(car.getName(), car.getLocation()));
-        return result.entrySet();
+    public String getResult() {
+        LocationParser locationParser = new LocationParser();
+        return carList.stream()
+                .map(car -> car.getName() + " : " + locationParser.parsing(car.getLocation()) + "\n")
+                .collect(Collectors.joining());
     }
 
-    public int getMaxMove() {
+    public int getTotalCount() {
+        return carList.size();
+    }
+
+    public int getMaxLocation() {
         return carList.stream()
                 .map(Car::getLocation)
-                .mapToInt(String::length)
-                .max()
+                .max(Integer::compareTo)
                 .orElse(0);
     }
 
-    public String getWinningCarNames() {
-        int maxMove = getMaxMove();
+    public String getMaxLocationCarsName() {
+        int maxLocation = getMaxLocation();
         return carList.stream()
-                .filter(car -> car.getTotalMove() == maxMove)
+                .filter(car -> car.getLocation() == maxLocation)
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
     }
