@@ -3,11 +3,12 @@ package racingcar.domain;
 import racingcar.util.LocationParser;
 import racingcar.util.NamesParser;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Cars {
+public final class Cars {
     private final List<Car> carList;
 
     public Cars(String names) {
@@ -16,7 +17,7 @@ public class Cars {
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return Collections.unmodifiableList(carList);
     }
 
     public void moveAllCars(List<Integer> numbers) {
