@@ -27,6 +27,10 @@ public final class Car {
         return location.getLocation();
     }
 
+    public boolean isSameLocation(int location) {
+        return location == getLocation();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
