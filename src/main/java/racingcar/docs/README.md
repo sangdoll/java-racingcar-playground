@@ -44,9 +44,8 @@
     2. 차량 숫자만큼의 숫자 배열을 받아, 각 차량을 이동시키는 moveAllCars 메서드
         - 예를 들어 차량이 1,2,3으로 3개이고, 입력이 [5,7,3] 인 리스트가 주어지면 1번 차량엔 5,2번 차량엔 7.. 을 넣고
             Car 클래스의 move 메서드를 실행시킴
-    3. getResult 메서드는, 현재 차량들의 결과를 문제의 조건과 같은 형식으로 리턴함
-    4. getMaxLocation은, 가장 많이 전진한 차량의 전진 횟수를 리턴함
-    5. getMaxLocationCarsName 메서드는, getMaxLocation을 이용하여 가장 많이 전진한 차량들을 문제의 형식대로 리턴함
-
+    3. getMaxLocation은, 가장 많이 전진한 차량의 전진 횟수를 리턴함
+    4. getMaxLocationCarsName 메서드는, getMaxLocation을 이용하여 가장 많이 전진한 차량들을 문제의 형식대로 리턴함
+    5. getMaxLocationCarsName을 이용하여, toString을 재정의하여 요구사항대로 출력함. 
 
     
