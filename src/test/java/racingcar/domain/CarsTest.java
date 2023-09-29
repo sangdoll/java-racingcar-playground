@@ -35,7 +35,7 @@ public class CarsTest {
         cars.moveAllCars(List.of(4, 9, 3));
 
         // 결과 출력이 정확히 되는지 확인
-        assertThat(cars.getResult()).isEqualTo("sang : --\ndoll : --\nsujin : --\n");
+        assertThat(cars.toString()).isEqualTo("sang : --\ndoll : --\nsujin : --\n");
     }
 
     @DisplayName("차량을 전진시킨 뒤, 최대 전진 횟수를 정확히 구하는지 확인합니다.")
