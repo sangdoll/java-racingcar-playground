@@ -22,7 +22,7 @@ public class GameController {
 		outputView.printResultMessage();
 		// 각 라운드마다 차를 랜덤 숫자를 이용하여 전진시킨 뒤, 결과를 출력함
 		for (int i = 0; i < round; i++) {
-			cars.moveAllCars(randomNumbers.getRandomNumbers(cars.getTotalCount()));
+			cars.moveAllCars(randomNumbers.getRandomNumbers(cars.getCarsCount()));
 			outputView.printMessage(cars.toString());
 		}
 		outputView.printWinner(cars.getMaxLocationCarsName());

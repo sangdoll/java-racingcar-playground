@@ -1,12 +1,12 @@
 package racingcar.domain;
 
-import racingcar.util.LocationParser;
-import racingcar.util.NamesParser;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import racingcar.util.LocationParser;
+import racingcar.util.NamesParser;
 
 public final class Cars {
 	private static final String COLON = " : ";
@@ -24,10 +24,10 @@ public final class Cars {
 
 	public void moveAllCars(List<Integer> numbers) {
 		IntStream.range(0, carList.size())
-			.forEach(ind -> carList.get(ind).move(numbers.get(ind)));
+			.forEach(index -> carList.get(index).move(numbers.get(index)));
 	}
 
-	public int getTotalCount() {
+	public int getCarsCount() {
 		return carList.size();
 	}
 
