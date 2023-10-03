@@ -2,6 +2,7 @@ package racingcar.view;
 
 public class OutputView {
 	private static final String NEW_LINE = System.getProperty("line.separator");
+
 	public void printMessage(String message) {
 		System.out.println(message);
 	}

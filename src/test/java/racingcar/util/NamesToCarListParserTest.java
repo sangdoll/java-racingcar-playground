@@ -13,7 +13,8 @@ class NamesToCarListParserTest {
 	@Test
 	void parseToCars_WithValidInput_MakeCorrectCarList() {
 		String names = "sang,doll,sujin";
-		assertThat(NamesToCarListParser.parseToCars(names)).extracting(Car::getName).containsOnly("sang", "doll", "sujin");
+		assertThat(NamesToCarListParser.parseToCars(names)).extracting(Car::getName)
+			.containsOnly("sang", "doll", "sujin");
 	}
 
 	@DisplayName("쉼표가 아닌 구분자가 주어졌을 때, 에러를 발생시키는지 확인합니다.")

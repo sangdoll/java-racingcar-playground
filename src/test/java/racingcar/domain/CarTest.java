@@ -35,7 +35,7 @@ public class CarTest {
 
 	@DisplayName("4 이상의 숫자를 넣었을 때, 위치를 전진시키는지 확인합니다.")
 	@ParameterizedTest
-	@ValueSource(ints = {4,5,6,7,8,9})
+	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	void move_WithNumber4OrMore_MoveForward(int value) {
 		// Given
 		Car expected = Car.from("jin");
@@ -49,7 +49,7 @@ public class CarTest {
 
 	@DisplayName("4 미만의 숫자를 넣었을 때, 위치를 전진시키지 않는지를 확인합니다.")
 	@ParameterizedTest
-	@ValueSource(ints = {1,2,3,4})
+	@ValueSource(ints = {1, 2, 3, 4})
 	void move_WithNumberLessThan4_DontMove(int value) {
 		// Given
 		Car expected = Car.from("jin");
