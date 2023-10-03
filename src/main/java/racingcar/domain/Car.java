@@ -6,13 +6,13 @@ public final class Car {
     private final CarName name;
     private CarLocation location;
 
-    public static Car of(String name) {
+    public static Car from(String name) {
         return new Car(name);
     }
 
     private Car(String name) {
-        this.name = CarName.of(name);
-        this.location = CarLocation.of(0);
+        this.name = CarName.from(name);
+        this.location = CarLocation.from(0);
     }
 
     public void move(int number) {
