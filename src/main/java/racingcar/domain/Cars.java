@@ -5,17 +5,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import racingcar.util.LocationParser;
-import racingcar.util.NamesParser;
+import racingcar.util.LocationToUIParser;
+import racingcar.util.NamesToCarListParser;
 
 public final class Cars {
 	private static final String COLON = " : ";
 	private static final String NEW_LINE = System.getProperty("line.separator");
 	private final List<Car> carList;
 
-	public Cars(String names) {
-		NamesParser parser = new NamesParser(names);
-		this.carList = parser.parsing();
+	private Cars(String names) {
+		this.carList = NamesToCarListParser.parseToCars(names);
+	}
+
+	public static Cars from(String names) {
+		return new Cars(names);
 	}
 
 	public List<Car> getCarList() {
@@ -46,12 +49,11 @@ public final class Cars {
 			.collect(Collectors.joining(", "));
 	}
 
-	@Override
-	public String toString() {
+	public String getPrintResult() {
 		return carList.stream()
 			.map(car -> car.getName()
 				+ COLON
-				+ LocationParser.parsing(car.getLocation())
+				+ LocationToUIParser.parse(car.getLocation())
 				+ NEW_LINE)
 			.collect(Collectors.joining());
 	}
