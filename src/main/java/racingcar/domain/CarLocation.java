@@ -13,7 +13,7 @@ public final class CarLocation {
 		this.location = location;
 	}
 
-	public static CarLocation of(int location) {
+	public static CarLocation from(int location) {
 		return new CarLocation(location);
 	}
 
@@ -22,9 +22,9 @@ public final class CarLocation {
 			throw new IllegalArgumentException("[ERROR] 숫자는 0부터 9까지만 가능합니다.");
 		}
 		if (number >= MIN_FOR_MOVE) {
-			return CarLocation.of(location + MOVE_UNIT);
+			return CarLocation.from(location + MOVE_UNIT);
 		}
-		return CarLocation.of(location);
+		return CarLocation.from(location);
 	}
 
 	public int getLocation() {
