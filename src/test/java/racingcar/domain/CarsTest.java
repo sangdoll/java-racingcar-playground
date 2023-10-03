@@ -14,7 +14,7 @@ public class CarsTest {
     @BeforeEach
     void setUp() {
         String names = "sang,doll,sujin";
-        cars = new Cars(names);
+        cars = Cars.from(names);
     }
 
     @DisplayName("입력이 주어졌을 때, 모든 차량을 정상적으로 전진시키는지 확인합니다.")
@@ -35,16 +35,16 @@ public class CarsTest {
         cars.moveAllCars(List.of(4, 9, 3));
 
         // 결과 출력이 정확히 되는지 확인
-        assertThat(cars.toString()).isEqualTo("sang : --\ndoll : --\nsujin : --\n");
+        assertThat(cars.getPrintResult()).isEqualTo("sang : --\ndoll : --\nsujin : --\n");
     }
 
     @DisplayName("차량을 전진시킨 뒤, 최대 전진 횟수를 정확히 구하는지 확인합니다.")
     @Test
     void getMaxLocation_AfterAllCarMoves_isCorrectResult() {
         // 첫번째 차량만 3칸, 나머지는 2칸씩 전진시킴
-        cars.moveAllCars(List.of(9, 5, 6));
-        cars.moveAllCars(List.of(9, 2, 8));
-        cars.moveAllCars(List.of(9, 9, 3));
+        cars.moveAllCars(List.of(9, 4, 5));
+        cars.moveAllCars(List.of(9, 1, 4));
+        cars.moveAllCars(List.of(9, 4, 3));
 
         // 최대 전진횟수가 3인지를 확인함
         assertThat(cars.getMaxLocation()).isEqualTo(3);
@@ -55,10 +55,10 @@ public class CarsTest {
     void getMaxLocationCarsName_AfterAllCarMoves_isCorrectResult() {
         // 첫 번째 차량과 세 번째 차량은 5칸, 두 번째 차량은 2칸을 이동시킴
         cars.moveAllCars(List.of(9, 5, 4));
-        cars.moveAllCars(List.of(8, 2, 5));
-        cars.moveAllCars(List.of(7, 1, 6));
-        cars.moveAllCars(List.of(6, 3, 7));
-        cars.moveAllCars(List.of(5, 9, 8));
+        cars.moveAllCars(List.of(5, 3, 4));
+        cars.moveAllCars(List.of(4, 1, 4));
+        cars.moveAllCars(List.of(5, 0, 4));
+        cars.moveAllCars(List.of(5, 9, 9));
 
         // 가장 많이 전진한 차량 이름이 첫 번째와 세 번째 차량의 이름인지를 확인함
         assertThat(cars.getMaxLocationCarsName()).isEqualTo("sang, sujin");
