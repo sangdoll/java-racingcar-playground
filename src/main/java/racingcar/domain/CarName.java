@@ -11,12 +11,12 @@ public final class CarName {
 			throw new IllegalArgumentException("[ERROR] 차량 이름은 5글자를 초과할 수 없습니다.");
 		}
 		if (name.isBlank()) {
-			throw new IllegalArgumentException("[ERROR] 빈 값은 사용될 수 없습니다.");
+			throw new IllegalArgumentException("[ERROR] 차량 이름은 적어도 1글자여야 합니다. ");
 		}
 		this.name = name;
 	}
 
-	public static CarName of(String name) {
+	public static CarName from(String name) {
 		return new CarName(name);
 	}
 
